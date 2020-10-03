@@ -1,0 +1,1 @@
+[![Build Status](https://dev.azure.com/AbhaySYadav/azureDemo/_apis/build/status/Abhay93.azure-demo-app?branchName=main)](https://dev.azure.com/AbhaySYadav/azureDemo/_build/latest?definitionId=3&branchName=main)
