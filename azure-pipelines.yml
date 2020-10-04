@@ -33,8 +33,6 @@ stages:
   jobs:
   - deployment: Deploy
     displayName: Deploy Mule App
-    pool:
-      vmImage: 'ubuntu-latest'
     environment: 'demo-env'
     strategy:
       runOnce:
