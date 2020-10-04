@@ -48,10 +48,16 @@ stages:
           maven
         path: $(MAVEN_CACHE_FOLDER)
       displayName: Cache Maven local repo
-  - deployment: Deploy
-    environment: 'demo-env'
-    strategy:   
-      runOnce:
-        deploy: 
-          steps:
-          -  script: 'mvn clean deploy -DmuleDeploy'
+  - job: Deploy 
+    steps: 
+    - task: Maven@3
+      inputs:
+        mavenPomFile: 'pom.xml'
+        mavenOptions: '-Xmx3072m $(MAVEN_OPTS)'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        goals: 'deploy'
+        options: '-DmuleDeploy'
