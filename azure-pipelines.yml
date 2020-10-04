@@ -28,7 +28,7 @@ stages:
         publishJUnitResults: true
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
         goals: 'install'
-- stage:
+- stage: 'Approval required'
   displayName: Deploy
   jobs:
   - job: DeployCache
