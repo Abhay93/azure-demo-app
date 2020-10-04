@@ -18,9 +18,6 @@ stages:
   - job: Build
     steps:
     - template: cache.yml
-      parameters:
-        agentOs: $(Agent.OS)
-        cacheFolder: $(MAVEN_CACHE_FOLDER)
     - task: Maven@3
       inputs:
         mavenPomFile: 'pom.xml'
@@ -37,9 +34,6 @@ stages:
   - job: DeployCache
     steps:
     - template: cache.yml
-      parameters:
-        agentOs: $(Agent.OS)
-        cacheFolder: $(MAVEN_CACHE_FOLDER)
     - task: Maven@3
       inputs:
         mavenPomFile: 'pom.xml'
