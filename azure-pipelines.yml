@@ -31,22 +31,17 @@ stages:
 - stage:
   displayName: Deploy
   jobs:
-  - deployment: Deploy
-    displayName: Deploy Mule App
-    environment: 'demo-env'
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - template: cache.yml
-          - task: Maven@3
-            inputs:
-              mavenPomFile: 'pom.xml'
-              mavenOptions: '-Xmx3072m $(MAVEN_OPTS)'
-              javaHomeOption: 'JDKVersion'
-              jdkVersionOption: '1.8'
-              jdkArchitectureOption: 'x64'
-              publishJUnitResults: true
-              testResultsFiles: '**/surefire-reports/TEST-*.xml'
-              goals: 'deploy'
-              options: '-DmuleDeploy'
+  - job: DeployCache
+    steps:
+    - template: cache.yml
+    - task: Maven@3
+      inputs:
+        mavenPomFile: 'pom.xml'
+        mavenOptions: '-Xmx3072m $(MAVEN_OPTS)'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        goals: 'deploy'
+        options: '-DmuleDeploy'
