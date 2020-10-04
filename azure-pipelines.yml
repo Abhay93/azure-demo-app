@@ -16,8 +16,6 @@ stages:
   displayName: Build
   jobs:
   - job: Build
-    pool:
-      name: Default
     steps:
     - task: Cache@2
       inputs:
@@ -41,8 +39,6 @@ stages:
   displayName: Deploy
   jobs:
   - job: Build
-    pool:
-      name: Default
     steps:
     - task: Maven@3
       inputs:
