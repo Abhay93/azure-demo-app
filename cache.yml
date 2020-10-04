@@ -1,0 +1,15 @@
+parameters:
+- name: agentOs
+  type: string
+  default: 'Release'
+- name: cacheFolder
+  type: string
+  default: ''
+steps:
+  - task: Cache@2
+    inputs:
+      key: 'maven | ${{parameters.agentOs}} | **/pom.xml'
+      restoreKeys: |
+        maven | ${{parameters.agentOs}}
+        maven
+      path: ${{parameters.cacheFolder}}
