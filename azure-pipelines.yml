@@ -30,5 +30,4 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- script: mvn clean install
 - script: mvn deploy -DmuleDeploy
